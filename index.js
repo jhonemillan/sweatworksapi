@@ -6,11 +6,13 @@ var helmet = require('helmet')
 var cors = require('cors');
 var app = express();
 var port = process.env.port || 3000;
+//routes
+var autorRoute = require('./routes/autores');
 
 app.use(cors());
 app.use(bodyparser.json());
 app.use(helmet());
-  
+app.use('/api/autor',autorRoute);  
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
