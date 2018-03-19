@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
         kAutor: {type: DataTypes.INTEGER, allowNull: false},
         Titulo: {type: DataTypes.STRING, allowNull: false},
         Mensaje: {type: DataTypes.STRING, allowNull: false},
-        DateCreated: {type: DataTypes.STRING, allowNull: false}
+        DateCreated: {type: DataTypes.DATE, allowNull: false}
     });
 
     publicaciones.associate = function(model){

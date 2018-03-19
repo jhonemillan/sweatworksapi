@@ -24,5 +24,7 @@ const sequelize = new Sequelize('null', 'null', 'null',{
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 db.autores = db.sequelize.import('./autores');
+db.publicaciones = db.sequelize.import('./publicaciones');
+
 
 module.exports = db;
