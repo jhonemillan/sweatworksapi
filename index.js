@@ -11,6 +11,7 @@ var autorRoute = require('./routes/autores');
 
 app.use(cors());
 app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: false }));
 app.use(helmet());
 app.use('/api/autor',autorRoute);  
 
