@@ -5,6 +5,7 @@ var models = require('../model');
 router.post('/add',(req, res)=>{
     debugger;
    var autor = models.autores.build({
+        kAutor: req.body.key,
         Nombre: req.body.nombre,
         Email: req.body.email,
         FechaNacimiento: req.body.fechanacimiento
@@ -71,7 +72,7 @@ router.put('/update/:id',(req, res)=>{
                 res.status(200).json({success: true, message: 'Se actualizo el autor'});
             })
             .catch(()=>{
-                res.status(200).json({success: false, message: 'no se actualizo el autor'});
+                res.status(500).json({success: false, message: 'no se actualizo el autor'});
             });
         }else{
             res.status(404).json({success: false, message: 'el autor no existe'});
