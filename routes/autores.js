@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 var models = require('../model');
 
-router.post('/add',(req, res)=>{
-    debugger;
+router.post('/add',(req, res)=>{   
    var autor = models.autores.build({
         kAutor: req.body.key,
         Nombre: req.body.nombre,
@@ -44,7 +43,7 @@ router.delete('/delete/:id',(req, res)=>{
     var id = req.params.id;
     models.autores.findOne({where: {kAutor: req.params.id}})
     .then(autor=>{        
-        console.log(autor);
+        //console.log(autor);
         if(autor){
             autor.destroy();
             res.status(200).json({success: true, message: 'el autor ha sido borrado'});

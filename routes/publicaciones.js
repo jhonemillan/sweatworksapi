@@ -15,8 +15,7 @@ router.get('/all/:id',(req, res)=>{
 });
 
 //POST - Add Publicacion
-router.post('/add',(req, res)=>{   
-    debugger;
+router.post('/add',(req, res)=>{       
    var publicacion = models.publicaciones.build({
         kAutor: req.body.key,
         Titulo: req.body.titulo,
@@ -27,7 +26,7 @@ router.post('/add',(req, res)=>{
     publicacion.save().then((datos)=> {        
         res.status(201).send({success: true, msg: 'publicacion created'});
     },(err)=>{
-        
+        console.log(err);
         if (err.name === 'SequelizeForeignKeyConstraintError') {
             console.log('user no existe')
         }        
