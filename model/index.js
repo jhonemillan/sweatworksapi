@@ -4,7 +4,7 @@ var db        = {};
 const sequelize = new Sequelize('null', 'null', 'null',{    
     dialect: 'sqlite',    
     storage: './db/posts.sqlite',
-    logging: true,
+    logging: false,
     define: {  
       timestamps: false,
       freezeTableName: true,
