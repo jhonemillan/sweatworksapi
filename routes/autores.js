@@ -30,7 +30,7 @@ router.get('/getAutor/:id',(req, res)=>{
 });
 
 
-router.get('/getAutors/all',(req, res)=>{
+router.get('/all',(req, res)=>{
     models.autores.findAll()
     .then((data)=>{
         res.status(200).json(data);

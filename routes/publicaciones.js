@@ -3,15 +3,31 @@ var router = express.Router();
 var models = require('../model');
 
 
-router.get('/all/:id',(req, res)=>{
-    models.publicaciones.findAll({
+router.get('/all/:id/:page',(req, res)=>{
+    let limit = 5;
+    let offset = 0;
+
+    models.publicaciones.findAndCountAll({
         where: {kAutor: req.params.id}
     })
     .then((data)=>{
-        res.status(200).json(data);
-    },(err)=>{
-        res.status(500).send(err);
-    }).catch((err)=>{console.log(err);});
+        let page = req.params.page;     
+        let pages = Math.ceil(data.count / limit);
+        offset = limit * (page - 1);
+
+        models.publicaciones.findAll({
+            where: {kAutor: req.params.id},
+            limit: limit,
+            offset: offset,
+            order: [['DateCreated','DESC']]
+        })
+        .then((posts)=>{
+            res.status(200).json({'data':posts, 'count':data.count, 'pages':pages});
+        },(err)=>{
+            res.status(500).send(err);
+        }).catch((err)=>{console.log(err);});
+
+    })
 });
 
 //POST - Add Publicacion
