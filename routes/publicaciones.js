@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../model');
-
+const Op = models.Sequelize.Op;
 
 router.get('/all/:id/:page',(req, res)=>{
     let limit = 5;
